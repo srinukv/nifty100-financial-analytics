@@ -1,0 +1,27 @@
+Day 04 FK Audit Report
+
+Missing Company IDs:
+
+AGTL
+ULTRACEMCO
+UNIONBANK
+UNITDSPR
+VBL
+VEDL
+WIPRO
+ZOMATO
+ZYDUSLIFE
+
+Affected Tables:
+
+* profitandloss
+* balancesheet
+* cashflow
+* analysis
+* documents
+* prosandcons
+* financial_ratios
+
+Action:
+No modification performed to companies.xlsx.
+Audit retained for Sprint review.
