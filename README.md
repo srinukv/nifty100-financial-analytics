@@ -56,3 +56,24 @@ docs/
 * [ ] Day 05 Full Data Load
 * [ ] Day 06 Manual Review
 * [ ] Day 07 Sprint Review
+
+Sprint 1 – Day 03 Completed
+
+Implemented schema validator with DQ rules.
+
+Generated validation report:
+output/validation_failures.csv
+
+Validation Summary:
+- DQ-02: 251
+- DQ-03: 36
+- DQ-05: 243
+- DQ-06: 1
+- DQ-07: 112
+- DQ-09: 1
+- DQ-11: 108
+- DQ-12: 7
+- DQ-14: 5
+- DQ-16: 5
+
+Total Failures: 769
