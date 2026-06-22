@@ -77,3 +77,34 @@ Validation Summary:
 - DQ-16: 5
 
 Total Failures: 769
+
+## Day 05 – Full Data Load
+
+### Completed
+
+* Implemented full load pipeline for all 12 datasets
+* Defined load order
+* Generated load_audit.csv
+* Created validated data layer
+* Performed FK validation
+
+### Load Results
+
+| Dataset          | Rows |
+| ---------------- | ---: |
+| companies        |   92 |
+| profitandloss    | 1276 |
+| balancesheet     | 1312 |
+| cashflow         | 1187 |
+| financial_ratios | 1184 |
+| market_cap       |  552 |
+| stock_prices     | 5520 |
+| documents        | 1585 |
+
+### FK Validation
+
+* Detected 438 orphan records
+* Rejected orphan rows during validated load
+* Final FK Errors = 0
+
+Status: Completed
