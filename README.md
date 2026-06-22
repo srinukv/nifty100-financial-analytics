@@ -1,20 +1,20 @@
 # Nifty100 Financial Analytics
 
-A Financial Data Engineering and Analytics project built on Nifty100 company financial datasets using Python, Pandas, ETL pipelines, Data Quality Validation, Data Cleaning, and Data Loading best practices.
+A Financial Data Engineering and Analytics project built using Python, Pandas, SQLite, and ETL best practices on Nifty100 company financial datasets.
 
 ---
 
-# Project Objective
+# Project Overview
 
-Build a production-style financial analytics pipeline that:
+The objective of this project is to build a production-style financial analytics pipeline that:
 
-* Loads and profiles raw financial datasets
-* Validates data quality using business rules
-* Cleans and standardizes financial data
-* Ensures referential integrity
-* Generates audit reports
-* Creates processed and validated datasets
-* Prepares data for database loading and downstream analytics
+* Ingests raw financial datasets
+* Profiles and validates data quality
+* Cleans and standardizes records
+* Performs foreign key and coverage audits
+* Creates processed and validated data layers
+* Loads validated data into SQLite
+* Supports downstream analytics and dashboard development
 
 ---
 
@@ -23,6 +23,18 @@ Build a production-style financial analytics pipeline that:
 GitHub Repository:
 
 https://github.com/srinukv/nifty100-financial-analytics
+
+---
+
+# Tech Stack
+
+* Python
+* Pandas
+* NumPy
+* SQLite
+* OpenPyXL
+* Git
+* GitHub
 
 ---
 
@@ -38,21 +50,30 @@ nifty100-financial-analytics/
 │
 ├── output/
 │
-├── src/
-│   └── etl/
-│       ├── loader.py
-│       ├── validator.py
-│       ├── data_cleaner.py
-│       ├── verify_cleaning.py
-│       ├── fk_audit.py
-│       ├── fk_check.py
-│       ├── fk_check_validated.py
-│       ├── load_pipeline.py
-│       ├── load_valid_data.py
-│       ├── manual_review.py
-│       ├── coverage_audit.py
-│       └── investigate_coverage.py
+├── sql/
+│   └── exploratory_queries.sql
 │
+├── src/
+│   ├── database/
+│   │   └── create_db.py
+│   │
+│   ├── etl/
+│   │   ├── loader.py
+│   │   ├── validator.py
+│   │   ├── data_cleaner.py
+│   │   ├── verify_cleaning.py
+│   │   ├── fk_audit.py
+│   │   ├── fk_check.py
+│   │   ├── fk_check_validated.py
+│   │   ├── load_pipeline.py
+│   │   ├── load_valid_data.py
+│   │   ├── manual_review.py
+│   │   ├── coverage_audit.py
+│   │   └── investigate_coverage.py
+│   │
+│   └── reports/
+│
+├── nifty100.db
 ├── README.md
 └── requirements.txt
 ```
@@ -61,48 +82,43 @@ nifty100-financial-analytics/
 
 # Source Datasets
 
-| Dataset               | Rows |
-| --------------------- | ---: |
-| companies.xlsx        |   92 |
-| profitandloss.xlsx    | 1276 |
-| balancesheet.xlsx     | 1312 |
-| cashflow.xlsx         | 1187 |
-| financial_ratios.xlsx | 1184 |
-| market_cap.xlsx       |  552 |
-| stock_prices.xlsx     | 5520 |
-| documents.xlsx        | 1585 |
-| analysis.xlsx         |   20 |
-| sectors.xlsx          |   92 |
-| peer_groups.xlsx      |   56 |
-| prosandcons.xlsx      |   16 |
+| Dataset               | Records |
+| --------------------- | ------: |
+| companies.xlsx        |      92 |
+| profitandloss.xlsx    |    1276 |
+| balancesheet.xlsx     |    1312 |
+| cashflow.xlsx         |    1187 |
+| financial_ratios.xlsx |    1184 |
+| market_cap.xlsx       |     552 |
+| stock_prices.xlsx     |    5520 |
+| documents.xlsx        |    1585 |
+| analysis.xlsx         |      20 |
+| sectors.xlsx          |      92 |
+| peer_groups.xlsx      |      56 |
+| prosandcons.xlsx      |      16 |
 
 Total Datasets: 12
 
 ---
 
-# Sprint 1 Progress
-
----
+# Sprint 1 Deliverables
 
 ## Day 01 – Data Profiling & Loader Foundation
 
 ### Completed
 
-* Project structure setup
-* Dataset profiling
-* Raw data inspection
+* Project setup
+* Dataset inspection
+* Data profiling
 * ETL loader implementation
-* Standardized loading process
-* Data loading verification
+* Standardized loading framework
 
 ### Deliverables
 
 * loader.py
-* Dataset profiling report
+* data_profiler.py
 
-### Status
-
-✅ Completed
+Status: ✅ Completed
 
 ---
 
@@ -110,26 +126,24 @@ Total Datasets: 12
 
 ### Completed
 
-* Validation framework design
-* Data quality architecture
-* Year normalization support
-* Company identifier normalization
-* Validation reporting setup
+* Validation architecture
+* Data normalization utilities
+* Company ID normalization
+* Year normalization
+* Validation reporting framework
 
 ### Deliverables
 
-* Validation framework
-* Normalization utilities
+* normaliser.py
+* validation framework
 
-### Status
-
-✅ Completed
+Status: ✅ Completed
 
 ---
 
 ## Day 03 – Schema Validator
 
-### Data Quality Rules
+### Implemented Data Quality Rules
 
 | Rule  | Description                  |
 | ----- | ---------------------------- |
@@ -150,35 +164,16 @@ Total Datasets: 12
 | DQ-15 | Balance Sheet Equality Check |
 | DQ-16 | Coverage Check               |
 
-### Validation Results
-
-| Rule  | Failures |
-| ----- | -------: |
-| DQ-02 |      251 |
-| DQ-03 |       36 |
-| DQ-05 |      243 |
-| DQ-06 |        1 |
-| DQ-07 |      112 |
-| DQ-09 |        1 |
-| DQ-11 |      108 |
-| DQ-12 |        7 |
-| DQ-14 |        5 |
-| DQ-16 |        5 |
-
-Total Validation Failures: 769
-
 ### Deliverables
 
 * validator.py
 * validation_failures.csv
 
-### Status
-
-✅ Completed
+Status: ✅ Completed
 
 ---
 
-## Day 04 – Data Cleaning & Standardization
+## Day 04 – Data Cleaning & FK Audit
 
 ### Duplicate Removal
 
@@ -190,19 +185,9 @@ Total Validation Failures: 769
 | financial_ratios |     119 |
 | market_cap       |       0 |
 
-Total Duplicates Removed: 341
+Total Duplicates Removed: **341**
 
-### Verification
-
-| Table            | Remaining Duplicates |
-| ---------------- | -------------------: |
-| profitandloss    |                    0 |
-| balancesheet     |                    0 |
-| cashflow         |                    0 |
-| financial_ratios |                    0 |
-| market_cap       |                    0 |
-
-### Foreign Key Audit
+### FK Audit Findings
 
 Missing Company IDs:
 
@@ -224,65 +209,26 @@ ZYDUSLIFE
 * verify_cleaning.py
 * fk_audit.py
 * cleaning_report.csv
-* processed datasets
 
-### Status
-
-✅ Completed
+Status: ✅ Completed
 
 ---
 
-## Day 05 – Full Data Load
+## Day 05 – Full Data Load & FK Validation
 
-### Objectives
+### Completed
 
-* Load all 12 datasets
-* Define load order
-* Generate audit report
-* Validate referential integrity
+* Full load of all 12 datasets
+* Load order implementation
+* Load audit generation
+* Validated data layer creation
+* FK validation
 
-### Load Results
+### Results
 
-| Dataset          | Rows |
-| ---------------- | ---: |
-| companies        |   92 |
-| profitandloss    | 1276 |
-| balancesheet     | 1312 |
-| cashflow         | 1187 |
-| financial_ratios | 1184 |
-| market_cap       |  552 |
-| stock_prices     | 5520 |
-| documents        | 1585 |
-
-### Load Audit
-
-Generated:
-
-```text
-output/load_audit.csv
-```
-
-### FK Validation
-
-Detected orphan rows:
-
-| Table            | Removed |
-| ---------------- | ------: |
-| analysis         |       4 |
-| balancesheet     |      85 |
-| cashflow         |      96 |
-| documents        |     128 |
-| financial_ratios |      24 |
-| profitandloss    |      99 |
-| prosandcons      |       2 |
-
-Total Orphan Rows Removed: 438
-
-### Final FK Validation
-
-```text
-Total FK Errors: 0
-```
+* 438 orphan rows identified
+* Orphan rows excluded from validated layer
+* FK Errors reduced to 0
 
 ### Deliverables
 
@@ -290,11 +236,9 @@ Total FK Errors: 0
 * load_valid_data.py
 * fk_check.py
 * fk_check_validated.py
-* validated datasets
+* load_audit.csv
 
-### Status
-
-✅ Completed
+Status: ✅ Completed
 
 ---
 
@@ -302,68 +246,42 @@ Total FK Errors: 0
 
 ### Manual Review
 
-Randomly Reviewed Companies:
+Reviewed:
 
-1. BRITANNIA
-2. INDUSINDBK
-3. HCLTECH
-4. HAVELLS
-5. DIVISLAB
+* BRITANNIA
+* INDUSINDBK
+* HCLTECH
+* HAVELLS
+* DIVISLAB
 
-### Findings
-
-* All reviewed companies contain 12+ years of records
-* Coverage is consistent across datasets
-* No missing year sequences identified
-* No loader defects detected
-
-### Coverage Audit
-
-Coverage exceptions identified:
+### Coverage Audit Findings
 
 #### ATGL
 
-```text
-P&L = 8 years
-BS  = 8 years
-CF  = 0 years
-```
+* P&L: 8 years
+* Balance Sheet: 8 years
+* Cash Flow: 0 years
 
 Finding:
-
-Source dataset contains no cashflow records.
+Source dataset missing cashflow records.
 
 #### SBIN
 
-```text
-P&L = 13 years
-BS  = 0 years
-CF  = 12 years
-```
+* P&L: 13 years
+* Balance Sheet: 0 years
+* Cash Flow: 12 years
 
 Finding:
-
-Source dataset contains no balance sheet records.
+Source dataset missing balance sheet records.
 
 #### JIOFIN
 
-```text
-P&L = 3 years
-BS  = 3 years
-CF  = 2 years
-```
+* P&L: 3 years
+* Balance Sheet: 3 years
+* Cash Flow: 2 years
 
 Finding:
-
-Recently listed company with limited financial history.
-
-Expected DQ-16 warning.
-
-### Final Assessment
-
-* No loader bugs identified
-* Coverage exceptions caused by source data availability
-* ETL pipeline functioning correctly
+Recently listed company with limited history.
 
 ### Deliverables
 
@@ -371,52 +289,109 @@ Expected DQ-16 warning.
 * coverage_audit.py
 * investigate_coverage.py
 
-### Status
-
-✅ Completed
+Status: ✅ Completed
 
 ---
 
-# Sprint 1 Status
+## Day 07 – Sprint Wrap-Up & Database Review
 
-| Day    | Status     |
-| ------ | ---------- |
-| Day 01 | ✅ Complete |
-| Day 02 | ✅ Complete |
-| Day 03 | ✅ Complete |
-| Day 04 | ✅ Complete |
-| Day 05 | ✅ Complete |
-| Day 06 | ✅ Complete |
-| Day 07 | ✅ Complete |
-Sprint 1 Status: COMPLETED
+### Completed
+
+* SQLite database creation
+* Validated data loaded into database
+* Exploratory SQL queries created
+* Sprint review completed
+
+### Database
+
+```text
+nifty100.db
+```
+
+### Database Tables
+
+| Table            | Rows |
+| ---------------- | ---: |
+| companies        |   92 |
+| sectors          |   92 |
+| peer_groups      |   56 |
+| analysis         |   16 |
+| prosandcons      |   14 |
+| profitandloss    | 1177 |
+| balancesheet     | 1227 |
+| cashflow         | 1091 |
+| financial_ratios | 1160 |
+| market_cap       |  552 |
+| stock_prices     | 5520 |
+| documents        | 1457 |
+
+### Deliverables
+
+* create_db.py
+* exploratory_queries.sql
+* nifty100.db
+
+Status: ✅ Completed
 
 ---
 
-# Technologies Used
+# Key Achievements
 
-* Python
-* Pandas
-* NumPy
-* OpenPyXL
-* Git
-* GitHub
+### Data Quality
+
+* Implemented 16 Data Quality Rules
+* Generated validation reports
+* Identified duplicate and orphan records
+
+### Data Cleaning
+
+* Removed 341 duplicate records
+* Created processed datasets
+
+### Referential Integrity
+
+* Detected 438 orphan records
+* Achieved FK Errors = 0
+
+### Database Layer
+
+* Created SQLite database
+* Loaded validated datasets
+* Prepared foundation for analytics
 
 ---
 
-# Upcoming Work
+# Sprint 1 Outcome
 
-## Day 07
+Successfully delivered:
 
-SQLite Database Load
+* ETL Pipeline
+* Data Validation Framework
+* Data Cleaning Framework
+* Processed Data Layer
+* Validated Data Layer
+* Foreign Key Validation
+* Coverage Auditing
+* SQLite Database
+* Exploratory SQL Layer
 
-Planned Deliverables:
+## Sprint 1 Status
 
-* SQLite Database Creation
-* Table Creation Scripts
-* Bulk Data Loading
-* Table Count Verification
-* Database Audit Report
+✅ COMPLETED
 
 ---
 
-Author: Srinivas K
+# Next Sprint
+
+Sprint 2 – Financial Ratio Engine
+
+Planned Topics:
+
+* Revenue Growth
+* Profit Growth
+* CAGR Calculations
+* Financial Ratios
+* Company Ranking Engine
+* Sector Benchmarking
+
+---
