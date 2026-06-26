@@ -38,3 +38,30 @@ Thumbs.db
 
 # IntelliJ
 .idea/
+
+# Logs
+output/ratio_logs/*.log
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Pytest
+.pytest_cache/
+
+# Coverage
+.coverage
+htmlcov/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Pytest
+.pytest_cache/
+
+# Logs
+output/ratio_logs/*.log
+
+# Virtual environment
+venv/
