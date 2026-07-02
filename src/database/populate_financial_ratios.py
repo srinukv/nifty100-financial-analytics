@@ -74,6 +74,15 @@ def calculate_basic_ratios(df):
         ),
         axis=1
     )
+    df["return_on_capital_employed_pct"] = df.apply(
+    lambda row: calculate_roce(
+        row["operating_profit"],
+        row["equity_capital"],
+        row["reserves"],
+        row["borrowings"]
+    ),
+    axis=1
+)
 
     return df
 
@@ -240,6 +249,7 @@ def main():
             net_profit_margin_pct=?,
             operating_profit_margin_pct=?,
             return_on_equity_pct=?,
+            return_on_capital_employed_pct=?,
             debt_to_equity=?,
             interest_coverage=?,
             asset_turnover=?,
@@ -262,6 +272,7 @@ def main():
             row["net_profit_margin_pct"],
             row["operating_profit_margin_pct"],
             row["return_on_equity_pct"],
+            row["return_on_capital_employed_pct"],
             row["debt_to_equity"],
             row["interest_coverage"],
             row["asset_turnover"],
@@ -319,7 +330,8 @@ def main():
             "year",
             "net_profit_margin_pct",
             "operating_profit_margin_pct",
-            "return_on_equity_pct"
+            "return_on_equity_pct",
+            "return_on_capital_employed_pct"
             ]
         ].head(10)
     )

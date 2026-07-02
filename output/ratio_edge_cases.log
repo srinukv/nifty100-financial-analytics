@@ -1,0 +1,59 @@
+Nifty100 Ratio Edge Case Report
+============================================================
+
+Companies Compared : 90
+Anomalies Found    : 44
+
+Category Summary
+------------------------------
+Version Difference: 26
+Formula Discrepancy: 12
+Data Source Issue: 6
+
+Detailed Anomalies
+------------------------------
+
+TRENT | ROE Diff: 4.36 | ROCE Diff: 6.42 | Version Difference
+ADANIENT | ROE Diff: -5.68 | ROCE Diff: -2.30 | Version Difference
+ADANIGREEN | ROE Diff: -2.79 | ROCE Diff: -87.12 | Formula Discrepancy
+BPCL | ROE Diff: -7.07 | ROCE Diff: 0.32 | Version Difference
+BRITANNIA | ROE Diff: 9.38 | ROCE Diff: 4.20 | Version Difference
+BHARTIARTL | ROE Diff: -5.07 | ROCE Diff: 11.94 | Version Difference
+TATAMOTORS | ROE Diff: -17.93 | ROCE Diff: 8.58 | Data Source Issue
+BEL | ROE Diff: 4352.82 | ROCE Diff: 2954.16 | Formula Discrepancy
+SIEMENS | ROE Diff: -1.40 | ROCE Diff: -5.75 | Version Difference
+CHOLAFIN | ROE Diff: -4.23 | ROCE Diff: -7.40 | Version Difference
+CIPLA | ROE Diff: -2.15 | ROCE Diff: 44.79 | Data Source Issue
+SHRIRAMFIN | ROE Diff: -1.78 | ROCE Diff: -7.26 | Version Difference
+COALINDIA | ROE Diff: -13.15 | ROCE Diff: 27.11 | Data Source Issue
+SBILIFE | ROE Diff: -0.35 | ROCE Diff: -11.69 | Version Difference
+SHREECEM | ROE Diff: -3.90 | ROCE Diff: 5.23 | Version Difference
+TATASTEEL | ROE Diff: -12.00 | ROCE Diff: 4.72 | Version Difference
+BAJFINANCE | ROE Diff: -5.45 | ROCE Diff: -7.98 | Version Difference
+EICHERMOT | ROE Diff: -3.12 | ROCE Diff: -8.77 | Version Difference
+GODREJCP | ROE Diff: -11.38 | ROCE Diff: -8.01 | Version Difference
+HAL | ROE Diff: 3640.18 | ROCE Diff: 2906.42 | Formula Discrepancy
+POWERGRID | ROE Diff: -2.08 | ROCE Diff: 5.36 | Version Difference
+TCS | ROE Diff: 44.90 | ROCE Diff: -6.14 | Data Source Issue
+BAJAJFINSV | ROE Diff: 11.10 | ROCE Diff: -10.58 | Version Difference
+BAJAJHLDNG | ROE Diff: -2.49 | ROCE Diff: -10.49 | Version Difference
+PNB | ROE Diff: 52.62 | ROCE Diff: nan | Formula Discrepancy
+HDFCLIFE | ROE Diff: -1.31 | ROCE Diff: 603.22 | Formula Discrepancy
+HEROMOTOCO | ROE Diff: -2.32 | ROCE Diff: 137.00 | Formula Discrepancy
+HINDALCO | ROE Diff: -1.38 | ROCE Diff: 97.76 | Formula Discrepancy
+HINDUNILVR | ROE Diff: 0.05 | ROCE Diff: 62.90 | Formula Discrepancy
+BAJAJ-AUTO | ROE Diff: -1.62 | ROCE Diff: -9.30 | Version Difference
+ICICIGI | ROE Diff: -2.92 | ROCE Diff: 108.95 | Formula Discrepancy
+ICICIPRULI | ROE Diff: -0.72 | ROCE Diff: 787.31 | Formula Discrepancy
+IRCTC | ROE Diff: -8.86 | ROCE Diff: -12.68 | Version Difference
+PFC | ROE Diff: 4.56 | ROCE Diff: -6.67 | Version Difference
+TITAN | ROE Diff: 3.01 | ROCE Diff: -5.84 | Version Difference
+LICI | ROE Diff: -21.70 | ROCE Diff: -30.22 | Data Source Issue
+TORNTPHARM | ROE Diff: -2.13 | ROCE Diff: 8.48 | Version Difference
+ADANIPOWER | ROE Diff: -19.87 | ROCE Diff: -12.74 | Data Source Issue
+LT | ROE Diff: 63.28 | ROCE Diff: 110.44 | Formula Discrepancy
+NESTLEIND | ROE Diff: -37.04 | ROCE Diff: -52.10 | Formula Discrepancy
+LTIM | ROE Diff: -4.28 | ROCE Diff: -6.81 | Version Difference
+M&M | ROE Diff: -0.59 | ROCE Diff: -13.69 | Version Difference
+ABB | ROE Diff: -0.79 | ROCE Diff: -5.42 | Version Difference
+INDIGO | ROE Diff: nan | ROCE Diff: 5378.69 | Version Difference
