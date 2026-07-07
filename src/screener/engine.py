@@ -262,3 +262,39 @@ def prepare_analytics_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     )
 
     return cleaned_df
+
+from src.screener.presets import get_preset
+
+
+def run_preset_screener(df, preset_name):
+    """
+    Execute a preset screener on an analytics DataFrame.
+
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        Analytics dataset.
+
+    preset_name : str
+        Name of the preset screener.
+
+    Returns
+    -------
+    pandas.DataFrame
+        Filtered and sorted DataFrame.
+    """
+    from src.screener.presets import get_preset
+
+
+def run_preset_screener(df, preset_name):
+    """
+    Execute a preset screener using the existing filter engine.
+    """
+
+    preset_filters = get_preset(preset_name)
+
+    config = {
+        "filters": preset_filters
+    }
+
+    return apply_filters(df, config)
