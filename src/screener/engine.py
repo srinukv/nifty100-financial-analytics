@@ -26,6 +26,7 @@ SELECT
     fr.interest_coverage,
     fr.asset_turnover,
     fr.free_cash_flow_cr,
+    fr.cash_from_operations_cr,
     fr.revenue_cagr_5yr,
     fr.pat_cagr_5yr,
     fr.eps_cagr_5yr,
