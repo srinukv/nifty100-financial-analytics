@@ -1,40 +1,25 @@
 # Nifty100 Financial Analytics
 
-A Financial Data Engineering and Analytics project built using Python, Pandas, SQLite, and ETL best practices on Nifty100 company financial datasets.
+A comprehensive financial analytics platform for analyzing Nifty 100 companies using Python, SQLite, Pandas, and Excel-based reporting. The project provides automated ETL, financial ratio computation, stock screening, peer-group analytics, radar chart visualization, and professional Excel reports to support investment research and financial analysis.
 
 ---
 
 # Project Overview
 
-The objective of this project is to build a production-style financial analytics pipeline that:
-
-* Ingests raw financial datasets
-* Profiles and validates data quality
-* Cleans and standardizes records
-* Performs foreign key and coverage audits
-* Creates processed and validated data layers
-* Loads validated data into SQLite
-* Supports downstream analytics and dashboard development
-
----
-
-# Repository
-
-GitHub Repository:
-
-https://github.com/srinukv/nifty100-financial-analytics
+The project processes financial statements of Nifty 100 companies, calculates key financial ratios, identifies investment opportunities using configurable screeners, compares companies within peer groups, and generates analyst-friendly reports.
 
 ---
 
 # Tech Stack
 
-* Python
+* Python 3.13
 * Pandas
-* NumPy
 * SQLite
 * OpenPyXL
-* Git
-* GitHub
+* PyYAML
+* Matplotlib
+* Pytest
+* Git & GitHub
 
 ---
 
@@ -43,355 +28,383 @@ https://github.com/srinukv/nifty100-financial-analytics
 ```text
 nifty100-financial-analytics/
 │
+├── config/
+│   └── screener_config.yaml
+│
 ├── data/
 │   ├── raw/
-│   ├── processed/
-│   └── validated/
+│   └── processed/
+│
+├── docs/
 │
 ├── output/
+│   ├── screener_output.xlsx
+│   └── peer_comparison.xlsx
 │
-├── sql/
-│   └── exploratory_queries.sql
+├── reports/
+│   └── radar_charts/
 │
 ├── src/
+│   ├── analytics/
+│   │   ├── peer.py
+│   │   └── radar.py
+│   │
 │   ├── database/
-│   │   └── create_db.py
-│   │
 │   ├── etl/
-│   │   ├── loader.py
-│   │   ├── validator.py
-│   │   ├── data_cleaner.py
-│   │   ├── verify_cleaning.py
-│   │   ├── fk_audit.py
-│   │   ├── fk_check.py
-│   │   ├── fk_check_validated.py
-│   │   ├── load_pipeline.py
-│   │   ├── load_valid_data.py
-│   │   ├── manual_review.py
-│   │   ├── coverage_audit.py
-│   │   └── investigate_coverage.py
+│   ├── ratios/
+│   ├── reports/
+│   │   └── peer_report.py
 │   │
-│   └── reports/
+│   ├── screener/
+│   │   ├── engine.py
+│   │   ├── presets.py
+│   │   ├── scoring.py
+│   │   └── export.py
+│   │
+│   └── utils/
+│
+├── tests/
+│   ├── analytics/
+│   ├── etl/
+│   ├── ratios/
+│   ├── reports/
+│   └── screener/
 │
 ├── nifty100.db
-├── README.md
-└── requirements.txt
+├── requirements.txt
+└── README.md
 ```
 
 ---
 
-# Source Datasets
+# Sprint 1 — Data Foundation
 
-| Dataset               | Records |
-| --------------------- | ------: |
-| companies.xlsx        |      92 |
-| profitandloss.xlsx    |    1276 |
-| balancesheet.xlsx     |    1312 |
-| cashflow.xlsx         |    1187 |
-| financial_ratios.xlsx |    1184 |
-| market_cap.xlsx       |     552 |
-| stock_prices.xlsx     |    5520 |
-| documents.xlsx        |    1585 |
-| analysis.xlsx         |      20 |
-| sectors.xlsx          |      92 |
-| peer_groups.xlsx      |      56 |
-| prosandcons.xlsx      |      16 |
-
-Total Datasets: 12
-
----
-
-# Sprint 1 Deliverables
-
-## Day 01 – Data Profiling & Loader Foundation
-
-### Completed
+## Features
 
 * Project setup
-* Dataset inspection
-* Data profiling
-* ETL loader implementation
-* Standardized loading framework
+* Virtual environment configuration
+* ETL pipeline
+* Data cleaning
+* Data validation
+* SQLite database creation
+* Foreign key validation
+* Processed CSV generation
+* Database loading
+* Data Quality validation rules
+* Documentation
 
-### Deliverables
+### Outputs
 
-* loader.py
-* data_profiler.py
-
-Status: ✅ Completed
-
----
-
-## Day 02 – Validation Foundation
-
-### Completed
-
-* Validation architecture
-* Data normalization utilities
-* Company ID normalization
-* Year normalization
-* Validation reporting framework
-
-### Deliverables
-
-* normaliser.py
-* validation framework
-
-Status: ✅ Completed
+* SQLite database
+* Processed datasets
+* Data quality reports
 
 ---
 
-## Day 03 – Schema Validator
+# Sprint 2 — Financial Ratio Engine
 
-### Implemented Data Quality Rules
+Implemented financial analytics for all companies.
 
-| Rule  | Description                  |
-| ----- | ---------------------------- |
-| DQ-01 | Company PK Uniqueness        |
-| DQ-02 | Company-Year Uniqueness      |
-| DQ-03 | Foreign Key Integrity        |
-| DQ-04 | Balance Sheet Balance        |
-| DQ-05 | OPM Cross Check              |
-| DQ-06 | Positive Sales               |
-| DQ-07 | Year Format                  |
-| DQ-08 | Ticker Format                |
-| DQ-09 | Net Cash Flow Check          |
-| DQ-10 | Non-Negative Fixed Assets    |
-| DQ-11 | Tax Rate Range               |
-| DQ-12 | Dividend Payout Cap          |
-| DQ-13 | URL Validation (Deferred)    |
-| DQ-14 | EPS Sign Consistency         |
-| DQ-15 | Balance Sheet Equality Check |
-| DQ-16 | Coverage Check               |
+## Financial Ratios
 
-### Deliverables
+* Net Profit Margin
+* Operating Profit Margin
+* Return on Equity (ROE)
+* Return on Capital Employed (ROCE)
+* Return on Assets (ROA)
+* Debt-to-Equity
+* Interest Coverage Ratio
+* Asset Turnover
+* Net Debt
 
-* validator.py
-* validation_failures.csv
+## Growth Metrics
 
-Status: ✅ Completed
+* Revenue CAGR
+* PAT CAGR
+* EPS CAGR
+
+## Cash Flow Metrics
+
+* Free Cash Flow
+* CFO Quality Score
+* CapEx Intensity
+
+## Quality Metrics
+
+* Composite Quality Score
+* High Leverage Flag
+* Debt-Free Label
+* Interest Coverage Warning
+
+### Outputs
+
+* Financial ratio dataset
+* SQLite ratio tables
+* `ratio_edge_cases.log`
+* `capital_allocation.csv`
 
 ---
 
-## Day 04 – Data Cleaning & FK Audit
+# Sprint 3 — Financial Screener & Peer Analytics
 
-### Duplicate Removal
+## Day 15 – Screener Engine
 
-| Table            | Removed |
-| ---------------- | ------: |
-| profitandloss    |      13 |
-| balancesheet     |     175 |
-| cashflow         |      34 |
-| financial_ratios |     119 |
-| market_cap       |       0 |
+Implemented:
 
-Total Duplicates Removed: **341**
+* Latest-year analytics dataset
+* Generic filtering engine
+* YAML configuration loader
+* Duplicate company-year validation
+* Composite score sorting
+* Financial-sector Debt-to-Equity exemption
 
-### FK Audit Findings
+---
 
-Missing Company IDs:
+## Day 16 – Preset Screeners
+
+Implemented reusable preset screeners.
+
+Available presets:
+
+* Quality Compounder
+* Growth Accelerator
+* Debt-Free Blue Chip
+
+Framework prepared for:
+
+* Value Pick
+* Dividend Champion
+* Turnaround Watch
+
+---
+
+## Day 17 – Composite Scoring
+
+Implemented:
+
+* Metric normalization
+* Winsorization (P10/P90)
+* Weighted scoring model
+* Sector-relative scoring
+
+Generated:
+
+* `output/screener_output.xlsx`
+
+---
+
+## Day 18 – Peer Analytics
+
+Implemented peer-group analytics.
+
+### Features
+
+* Peer group loader
+* Peer mapping
+* Percentile computation
+* SQLite persistence
+
+Supported metrics:
+
+* ROE
+* ROCE
+* Net Profit Margin
+* Debt-to-Equity
+* Free Cash Flow
+* PAT CAGR
+* Revenue CAGR
+* EPS CAGR
+* Interest Coverage
+* Asset Turnover
+
+Generated:
+
+* `peer_percentiles` SQLite table
+
+---
+
+## Day 19 – Radar Chart Visualization
+
+Implemented radar chart analytics.
+
+### Features
+
+* Company financial profile radar charts
+* Peer-group average overlay
+* Nifty 100 average fallback
+* PNG export
+* Batch generation for all companies
+
+Generated:
 
 ```text
-AGTL
-ULTRACEMCO
-UNIONBANK
-UNITDSPR
-VBL
-VEDL
-WIPRO
-ZOMATO
-ZYDUSLIFE
+reports/radar_charts/
 ```
 
-### Deliverables
-
-* data_cleaner.py
-* verify_cleaning.py
-* fk_audit.py
-* cleaning_report.csv
-
-Status: ✅ Completed
+containing radar charts for all companies.
 
 ---
 
-## Day 05 – Full Data Load & FK Validation
+## Day 20 – Peer Comparison Report
 
-### Completed
+Implemented a professional Excel reporting engine.
 
-* Full load of all 12 datasets
-* Load order implementation
-* Load audit generation
-* Validated data layer creation
-* FK validation
+### Features
 
-### Results
+* Multi-sheet workbook
+* One worksheet per peer group
+* Percentile-based conditional formatting
+* Benchmark company highlighting
+* Median summary row
 
-* 438 orphan rows identified
-* Orphan rows excluded from validated layer
-* FK Errors reduced to 0
+Generated:
 
-### Deliverables
-
-* load_pipeline.py
-* load_valid_data.py
-* fk_check.py
-* fk_check_validated.py
-* load_audit.csv
-
-Status: ✅ Completed
+```text
+output/peer_comparison.xlsx
+```
 
 ---
 
-## Day 06 – Manual Data Quality Review
+## Day 21 – Testing & Sprint Review
 
-### Manual Review
+Completed project validation.
 
-Reviewed:
+### Verification
 
-* BRITANNIA
-* INDUSINDBK
-* HCLTECH
-* HAVELLS
-* DIVISLAB
-
-### Coverage Audit Findings
-
-#### ATGL
-
-* P&L: 8 years
-* Balance Sheet: 8 years
-* Cash Flow: 0 years
-
-Finding:
-Source dataset missing cashflow records.
-
-#### SBIN
-
-* P&L: 13 years
-* Balance Sheet: 0 years
-* Cash Flow: 12 years
-
-Finding:
-Source dataset missing balance sheet records.
-
-#### JIOFIN
-
-* P&L: 3 years
-* Balance Sheet: 3 years
-* Cash Flow: 2 years
-
-Finding:
-Recently listed company with limited history.
-
-### Deliverables
-
-* manual_review.py
-* coverage_audit.py
-* investigate_coverage.py
-
-Status: ✅ Completed
-
----
-
-## Day 07 – Sprint Wrap-Up & Database Review
-
-### Completed
-
-* SQLite database creation
-* Validated data loaded into database
-* Exploratory SQL queries created
+* Automated unit tests passed
+* Quality Compounder preset manually verified
+* IT Services peer ranking validated
+* FMCG peer ranking validated
 * Sprint review completed
 
-### Database
+---
+
+# Testing
+
+The project follows Test-Driven Development (TDD).
+
+Current test coverage includes:
+
+* ETL
+* Ratio Engine
+* Screener
+* Analytics
+* Reporting
+
+**Current Status**
+
+* 76 Tests Passed
+* 0 Failures
+
+---
+
+# Reports Generated
+
+## Screener Report
 
 ```text
-nifty100.db
+output/screener_output.xlsx
 ```
 
-### Database Tables
+Includes:
 
-| Table            | Rows |
-| ---------------- | ---: |
-| companies        |   92 |
-| sectors          |   92 |
-| peer_groups      |   56 |
-| analysis         |   16 |
-| prosandcons      |   14 |
-| profitandloss    | 1177 |
-| balancesheet     | 1227 |
-| cashflow         | 1091 |
-| financial_ratios | 1160 |
-| market_cap       |  552 |
-| stock_prices     | 5520 |
-| documents        | 1457 |
-
-### Deliverables
-
-* create_db.py
-* exploratory_queries.sql
-* nifty100.db
-
-Status: ✅ Completed
+* Multiple preset screener worksheets
+* Composite scores
+* Conditional formatting
 
 ---
 
-# Key Achievements
+## Peer Comparison Report
 
-### Data Quality
+```text
+output/peer_comparison.xlsx
+```
 
-* Implemented 16 Data Quality Rules
-* Generated validation reports
-* Identified duplicate and orphan records
+Includes:
 
-### Data Cleaning
-
-* Removed 341 duplicate records
-* Created processed datasets
-
-### Referential Integrity
-
-* Detected 438 orphan records
-* Achieved FK Errors = 0
-
-### Database Layer
-
-* Created SQLite database
-* Loaded validated datasets
-* Prepared foundation for analytics
+* One worksheet per peer group
+* Financial metrics
+* Percentile rankings
+* Benchmark highlighting
+* Median summary row
 
 ---
 
-# Sprint 1 Outcome
+## Radar Charts
 
-Successfully delivered:
+```text
+reports/radar_charts/
+```
 
-* ETL Pipeline
-* Data Validation Framework
-* Data Cleaning Framework
-* Processed Data Layer
-* Validated Data Layer
-* Foreign Key Validation
-* Coverage Auditing
-* SQLite Database
-* Exploratory SQL Layer
-
-## Sprint 1 Status
-
-✅ COMPLETED
+Contains radar chart visualizations for all companies with peer comparison overlays.
 
 ---
 
-# Next Sprint
+# Configuration
 
-Sprint 2 – Financial Ratio Engine
+Screening thresholds are configurable through:
 
-Planned Topics:
+```text
+config/screener_config.yaml
+```
 
-* Revenue Growth
-* Profit Growth
-* CAGR Calculations
-* Financial Ratios
-* Company Ranking Engine
-* Sector Benchmarking
+Analysts can modify screening criteria without changing source code.
 
 ---
+
+# Database
+
+SQLite stores:
+
+* Company master data
+* Financial statements
+* Financial ratios
+* Market capitalization
+* Sector information
+* Peer groups
+* Peer percentile rankings
+
+---
+
+# Key Features
+
+* Automated ETL pipeline
+* Financial ratio computation
+* Configurable stock screening
+* Composite quality scoring
+* Peer-group analytics
+* Percentile ranking engine
+* Radar chart visualization
+* Professional Excel reporting
+* SQLite data storage
+* Modular architecture
+* Test-Driven Development (TDD)
+
+---
+
+# Future Enhancements
+
+* Interactive dashboard using Power BI or Streamlit
+* Historical trend analysis
+* Portfolio comparison
+* Valuation models (DCF, Relative Valuation)
+* Risk analytics
+* Performance attribution
+* REST API for financial analytics
+* Automated report scheduling
+
+---
+
+# Author
+
+**Venkata Srinivasarao Killadi**
+
+B.Tech – Computer Science & Engineering (Data Science)
+
+Anil Neerukonda Institute of Technology & Sciences (ANITS)
+
+---
+
+# License
+
+This project is developed for educational purposes and portfolio demonstration.
