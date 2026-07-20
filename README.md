@@ -162,12 +162,6 @@ nifty100-financial-analytics/
 
 # 💻 Installation
 
-Clone the repository
-
-```bash
-git clone https://github.com/<your-github-username>/nifty100-financial-analytics.git
-```
-
 Move into project
 
 ```bash
@@ -253,71 +247,51 @@ Contains companies flagged as:
 
 # 📷 Dashboard Screens
 
-## 1. Home Dashboard
+## 🏠 Home Dashboard
 
-**Description**
-
-Displays key KPIs, company count, sector overview, and market summary.
-
-> 📷 Insert Home Dashboard Screenshot
+![Home](assets/screenshots/home.png)
 
 ---
 
-## 2. Company Profile
+## 🏢 Company Profile
 
-Displays detailed financial information for a selected company.
-
-> 📷 Insert Company Profile Screenshot
+![Profile](assets/screenshots/profile.png)
 
 ---
 
-## 3. Stock Screener
+## 🔍 Stock Screener
 
-Apply predefined investment screeners and export results.
-
-> 📷 Insert Screener Screenshot
+![Screener](assets/screenshots/screener.png)
 
 ---
 
-## 4. Peer Comparison
+## 👥 Peer Comparison
 
-Compare companies within the same peer group using rankings and charts.
-
-> 📷 Insert Peer Comparison Screenshot
+![Peers](assets/screenshots/peers.png)
 
 ---
 
-## 5. Trend Analysis
+## 📈 Trend Analysis
 
-Visualize historical financial trends using interactive charts.
-
-> 📷 Insert Trend Analysis Screenshot
+![Trends](assets/screenshots/trends.png)
 
 ---
 
-## 6. Sector Analysis
+## 🏭 Sector Analysis
 
-Analyze sector-level financial performance and rankings.
-
-> 📷 Insert Sector Analysis Screenshot
+![Sectors](assets/screenshots/sectors.png)
 
 ---
 
-## 7. Capital Allocation
+## 💰 Capital Allocation
 
-Review CAPEX, Free Cash Flow, dividends, and capital deployment.
-
-> 📷 Insert Capital Allocation Screenshot
+![Capital](assets/screenshots/capital.png)
 
 ---
 
-## 8. Reports
+## 📄 Reports
 
-Download valuation and screener reports.
-
-> 📷 Insert Reports Screenshot
-
----
+![Reports](assets/screenshots/reports.png)
 
 # 📊 Sprint 4 Retrospective
 
@@ -410,9 +384,9 @@ This project is developed for educational and internship purposes.
 
 B.Tech – Computer Science & Engineering (Data Science)
 
-GitHub: https://github.com/srinukv/nifty100-financial-analytics/<your-github-username>
+GitHub: https://github.com/srinukv/nifty100-financial-analytics/
 
-LinkedIn: https://www.linkedin.com/in/venkata-srinivasarao-killadi-6108392ab/<your-linkedin-profile>
+LinkedIn: https://www.linkedin.com/in/venkata-srinivasarao-killadi-6108392ab/
 
 ---
 
