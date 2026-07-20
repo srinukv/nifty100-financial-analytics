@@ -1,74 +1,157 @@
-# Nifty100 Financial Analytics
+# 📈 Nifty100 Financial Analytics Dashboard
 
-A comprehensive financial analytics platform for analyzing Nifty 100 companies using Python, SQLite, Pandas, and Excel-based reporting. The project provides automated ETL, financial ratio computation, stock screening, peer-group analytics, radar chart visualization, and professional Excel reports to support investment research and financial analysis.
-
----
-
-# Project Overview
-
-The project processes financial statements of Nifty 100 companies, calculates key financial ratios, identifies investment opportunities using configurable screeners, compares companies within peer groups, and generates analyst-friendly reports.
+A comprehensive financial analytics platform built using **Python, Pandas, SQLite, and Streamlit** for analyzing Nifty100 companies. The project provides financial ratio analysis, company profiling, peer comparison, stock screening, trend analysis, valuation analytics, and downloadable reports through an interactive dashboard.
 
 ---
 
-# Tech Stack
+# 🚀 Features
 
-* Python 3.13
-* Pandas
-* SQLite
-* OpenPyXL
-* PyYAML
-* Matplotlib
-* Pytest
-* Git & GitHub
+## 📊 Dashboard Modules
+
+### 🏠 Home Dashboard
+- Overall dashboard summary
+- Total companies analyzed
+- Sector distribution
+- Key financial metrics
+- Market overview
 
 ---
 
-# Project Structure
+### 🏢 Company Profile
+- Company information
+- Financial ratios
+- Growth metrics
+- Profitability analysis
+- Balance Sheet summary
+- Cash Flow summary
 
-```text
+---
+
+### 🔍 Stock Screener
+Supports multiple predefined screeners:
+
+- Quality Compounder
+- Value Pick
+- Growth Accelerator
+- Dividend Champion
+- Debt-Free Blue Chip
+- Turnaround Watch
+
+Features:
+- Dynamic filtering
+- CSV Export
+- Financial metric comparison
+
+---
+
+### 👥 Peer Comparison
+Compare companies within the same peer group.
+
+Displays:
+- Peer percentile rankings
+- Industry benchmark
+- Radar chart comparison
+- Relative financial performance
+
+---
+
+### 📈 Trend Analysis
+Historical visualization of:
+
+- Revenue
+- Net Profit
+- ROE
+- ROCE
+- Net Profit Margin
+- Free Cash Flow
+- Debt to Equity
+
+Interactive trend charts available.
+
+---
+
+### 🏭 Sector Analysis
+Sector-wise analytics including:
+
+- Average ROE
+- Average ROCE
+- Net Profit Margin
+- Company comparison
+- Sector ranking
+
+---
+
+### 💰 Capital Allocation
+Analyze capital deployment using:
+
+- CAPEX
+- Free Cash Flow
+- Dividend Payout
+- Share Buyback
+- Cash Conversion
+
+---
+
+### 📄 Reports
+Generate and download:
+
+- Valuation Summary
+- Valuation Flags
+- Screener Results
+- Peer Comparison Reports
+
+---
+
+# ⚙️ Technology Stack
+
+| Category | Technology |
+|----------|------------|
+| Language | Python 3.13 |
+| Dashboard | Streamlit |
+| Database | SQLite |
+| Data Analysis | Pandas |
+| Charts | Plotly |
+| Excel Reports | OpenPyXL |
+| Version Control | Git & GitHub |
+
+---
+
+# 📁 Project Structure
+
+```
 nifty100-financial-analytics/
-│
-├── config/
-│   └── screener_config.yaml
 │
 ├── data/
 │   ├── raw/
 │   └── processed/
 │
-├── docs/
-│
 ├── output/
-│   ├── screener_output.xlsx
-│   └── peer_comparison.xlsx
-│
-├── reports/
-│   └── radar_charts/
+│   ├── valuation_summary.xlsx
+│   └── valuation_flags.csv
 │
 ├── src/
 │   ├── analytics/
-│   │   ├── peer.py
-│   │   └── radar.py
+│   │   └── valuation.py
 │   │
-│   ├── database/
-│   ├── etl/
-│   ├── ratios/
+│   ├── dashboard/
+│   │   ├── app.py
+│   │   ├── pages/
+│   │   │   ├── 01_home.py
+│   │   │   ├── 02_profile.py
+│   │   │   ├── 03_screener.py
+│   │   │   ├── 04_peers.py
+│   │   │   ├── 05_trends.py
+│   │   │   ├── 06_sectors.py
+│   │   │   ├── 07_capital.py
+│   │   │   └── 08_reports.py
+│   │   │
+│   │   ├── services/
+│   │   └── utils/
+│   │       └── db.py
+│   │
 │   ├── reports/
-│   │   └── peer_report.py
-│   │
 │   ├── screener/
-│   │   ├── engine.py
-│   │   ├── presets.py
-│   │   ├── scoring.py
-│   │   └── export.py
-│   │
-│   └── utils/
-│
-├── tests/
-│   ├── analytics/
-│   ├── etl/
-│   ├── ratios/
-│   ├── reports/
-│   └── screener/
+│   └── database/
 │
 ├── nifty100.db
 ├── requirements.txt
@@ -77,334 +160,260 @@ nifty100-financial-analytics/
 
 ---
 
-# Sprint 1 — Data Foundation
+# 💻 Installation
 
-## Features
+Clone the repository
 
-* Project setup
-* Virtual environment configuration
-* ETL pipeline
-* Data cleaning
-* Data validation
-* SQLite database creation
-* Foreign key validation
-* Processed CSV generation
-* Database loading
-* Data Quality validation rules
-* Documentation
-
-### Outputs
-
-* SQLite database
-* Processed datasets
-* Data quality reports
-
----
-
-# Sprint 2 — Financial Ratio Engine
-
-Implemented financial analytics for all companies.
-
-## Financial Ratios
-
-* Net Profit Margin
-* Operating Profit Margin
-* Return on Equity (ROE)
-* Return on Capital Employed (ROCE)
-* Return on Assets (ROA)
-* Debt-to-Equity
-* Interest Coverage Ratio
-* Asset Turnover
-* Net Debt
-
-## Growth Metrics
-
-* Revenue CAGR
-* PAT CAGR
-* EPS CAGR
-
-## Cash Flow Metrics
-
-* Free Cash Flow
-* CFO Quality Score
-* CapEx Intensity
-
-## Quality Metrics
-
-* Composite Quality Score
-* High Leverage Flag
-* Debt-Free Label
-* Interest Coverage Warning
-
-### Outputs
-
-* Financial ratio dataset
-* SQLite ratio tables
-* `ratio_edge_cases.log`
-* `capital_allocation.csv`
-
----
-
-# Sprint 3 — Financial Screener & Peer Analytics
-
-## Day 15 – Screener Engine
-
-Implemented:
-
-* Latest-year analytics dataset
-* Generic filtering engine
-* YAML configuration loader
-* Duplicate company-year validation
-* Composite score sorting
-* Financial-sector Debt-to-Equity exemption
-
----
-
-## Day 16 – Preset Screeners
-
-Implemented reusable preset screeners.
-
-Available presets:
-
-* Quality Compounder
-* Growth Accelerator
-* Debt-Free Blue Chip
-
-Framework prepared for:
-
-* Value Pick
-* Dividend Champion
-* Turnaround Watch
-
----
-
-## Day 17 – Composite Scoring
-
-Implemented:
-
-* Metric normalization
-* Winsorization (P10/P90)
-* Weighted scoring model
-* Sector-relative scoring
-
-Generated:
-
-* `output/screener_output.xlsx`
-
----
-
-## Day 18 – Peer Analytics
-
-Implemented peer-group analytics.
-
-### Features
-
-* Peer group loader
-* Peer mapping
-* Percentile computation
-* SQLite persistence
-
-Supported metrics:
-
-* ROE
-* ROCE
-* Net Profit Margin
-* Debt-to-Equity
-* Free Cash Flow
-* PAT CAGR
-* Revenue CAGR
-* EPS CAGR
-* Interest Coverage
-* Asset Turnover
-
-Generated:
-
-* `peer_percentiles` SQLite table
-
----
-
-## Day 19 – Radar Chart Visualization
-
-Implemented radar chart analytics.
-
-### Features
-
-* Company financial profile radar charts
-* Peer-group average overlay
-* Nifty 100 average fallback
-* PNG export
-* Batch generation for all companies
-
-Generated:
-
-```text
-reports/radar_charts/
+```bash
+git clone https://github.com/<your-github-username>/nifty100-financial-analytics.git
 ```
 
-containing radar charts for all companies.
+Move into project
 
----
+```bash
+cd nifty100-financial-analytics
+```
 
-## Day 20 – Peer Comparison Report
+Create virtual environment
 
-Implemented a professional Excel reporting engine.
+```bash
+python -m venv venv
+```
 
-### Features
+Activate
 
-* Multi-sheet workbook
-* One worksheet per peer group
-* Percentile-based conditional formatting
-* Benchmark company highlighting
-* Median summary row
+Windows
 
-Generated:
+```bash
+venv\Scripts\activate
+```
 
-```text
-output/peer_comparison.xlsx
+Linux/Mac
+
+```bash
+source venv/bin/activate
+```
+
+Install dependencies
+
+```bash
+pip install -r requirements.txt
 ```
 
 ---
 
-## Day 21 – Testing & Sprint Review
+# ▶️ Run Dashboard
 
-Completed project validation.
+Launch Streamlit
 
-### Verification
-
-* Automated unit tests passed
-* Quality Compounder preset manually verified
-* IT Services peer ranking validated
-* FMCG peer ranking validated
-* Sprint review completed
-
----
-
-# Testing
-
-The project follows Test-Driven Development (TDD).
-
-Current test coverage includes:
-
-* ETL
-* Ratio Engine
-* Screener
-* Analytics
-* Reporting
-
-**Current Status**
-
-* 76 Tests Passed
-* 0 Failures
-
----
-
-# Reports Generated
-
-## Screener Report
-
-```text
-output/screener_output.xlsx
+```bash
+streamlit run src/dashboard/app.py
 ```
 
-Includes:
+After launching, open
 
-* Multiple preset screener worksheets
-* Composite scores
-* Conditional formatting
-
----
-
-## Peer Comparison Report
-
-```text
-output/peer_comparison.xlsx
+```
+http://localhost:8501
 ```
 
-Includes:
-
-* One worksheet per peer group
-* Financial metrics
-* Percentile rankings
-* Benchmark highlighting
-* Median summary row
-
 ---
 
-## Radar Charts
+# 📥 Output Reports
 
-```text
-reports/radar_charts/
+The dashboard generates:
+
+```
+output/
+├── valuation_summary.xlsx
+└── valuation_flags.csv
 ```
 
-Contains radar chart visualizations for all companies with peer comparison overlays.
+### valuation_summary.xlsx
+
+Contains
+
+- Company Name
+- Sector
+- P/E Ratio
+- P/B Ratio
+- EV/EBITDA
+- FCF Yield
+- 5-Year Median PE
+- Sector Median PE
+- Valuation Flag
+
+### valuation_flags.csv
+
+Contains companies flagged as:
+
+- Discount
+- Caution
 
 ---
 
-# Configuration
+# 📷 Dashboard Screens
 
-Screening thresholds are configurable through:
+## 1. Home Dashboard
 
-```text
-config/screener_config.yaml
-```
+**Description**
 
-Analysts can modify screening criteria without changing source code.
+Displays key KPIs, company count, sector overview, and market summary.
 
----
-
-# Database
-
-SQLite stores:
-
-* Company master data
-* Financial statements
-* Financial ratios
-* Market capitalization
-* Sector information
-* Peer groups
-* Peer percentile rankings
+> 📷 Insert Home Dashboard Screenshot
 
 ---
 
-# Key Features
+## 2. Company Profile
 
-* Automated ETL pipeline
-* Financial ratio computation
-* Configurable stock screening
-* Composite quality scoring
-* Peer-group analytics
-* Percentile ranking engine
-* Radar chart visualization
-* Professional Excel reporting
-* SQLite data storage
-* Modular architecture
-* Test-Driven Development (TDD)
+Displays detailed financial information for a selected company.
+
+> 📷 Insert Company Profile Screenshot
 
 ---
 
-# Future Enhancements
+## 3. Stock Screener
 
-* Interactive dashboard using Power BI or Streamlit
-* Historical trend analysis
-* Portfolio comparison
-* Valuation models (DCF, Relative Valuation)
-* Risk analytics
-* Performance attribution
-* REST API for financial analytics
-* Automated report scheduling
+Apply predefined investment screeners and export results.
+
+> 📷 Insert Screener Screenshot
 
 ---
 
-# Author
+## 4. Peer Comparison
+
+Compare companies within the same peer group using rankings and charts.
+
+> 📷 Insert Peer Comparison Screenshot
+
+---
+
+## 5. Trend Analysis
+
+Visualize historical financial trends using interactive charts.
+
+> 📷 Insert Trend Analysis Screenshot
+
+---
+
+## 6. Sector Analysis
+
+Analyze sector-level financial performance and rankings.
+
+> 📷 Insert Sector Analysis Screenshot
+
+---
+
+## 7. Capital Allocation
+
+Review CAPEX, Free Cash Flow, dividends, and capital deployment.
+
+> 📷 Insert Capital Allocation Screenshot
+
+---
+
+## 8. Reports
+
+Download valuation and screener reports.
+
+> 📷 Insert Reports Screenshot
+
+---
+
+# 📊 Sprint 4 Retrospective
+
+## UX Decisions
+
+- Multi-page Streamlit architecture
+- Sidebar-based navigation
+- Cached database queries
+- Interactive Plotly charts
+- Exportable reports
+- Simple and consistent UI
+
+---
+
+## Data Edge Cases
+
+During testing the following cases were identified:
+
+- Companies with limited historical data (for example, JIOFIN)
+- Missing CAGR values for recently listed companies
+- Duplicate historical ratio entries removed before valuation calculations
+- Financial sector metrics handled separately where applicable
+
+---
+
+## Performance Findings
+
+- Dashboard launches successfully
+- Company Profile loads within the expected target time
+- Cached database queries improve responsiveness
+- Interactive charts render smoothly
+- Report generation completes successfully
+
+---
+
+## Testing Summary
+
+Completed:
+
+- ✅ All 8 dashboard pages tested
+- ✅ Multiple companies verified across sectors
+- ✅ Screener presets validated
+- ✅ Charts verified
+- ✅ Missing data handling verified
+- ✅ CSV exports validated
+- ✅ Valuation reports verified
+
+---
+
+# 📌 Deliverables
+
+- Streamlit Multi-page Dashboard
+- Company Profile Module
+- Stock Screener
+- Peer Comparison
+- Trend Analysis
+- Sector Analysis
+- Capital Allocation Module
+- Reports Module
+- Valuation Engine
+- Excel Report Generation
+- CSV Report Generation
+
+---
+
+# 🎯 Sprint 4 Completion Status
+
+| Task | Status |
+|------|--------|
+| Dashboard Development | ✅ |
+| Company Profile | ✅ |
+| Trend Analysis | ✅ |
+| Capital Allocation | ✅ |
+| Valuation Module | ✅ |
+| Integration Testing | ✅ |
+| Bug Investigation | ✅ |
+| Documentation | ✅ |
+
+---
+
+# 📄 License
+
+This project is developed for educational and internship purposes.
+
+---
+
+# 👨‍💻 Author
 
 **Venkata Srinivasarao Killadi**
 
 B.Tech – Computer Science & Engineering (Data Science)
 
-Anil Neerukonda Institute of Technology & Sciences (ANITS)
+GitHub: https://github.com/srinukv/nifty100-financial-analytics/<your-github-username>
+
+LinkedIn: https://www.linkedin.com/in/venkata-srinivasarao-killadi-6108392ab/<your-linkedin-profile>
 
 ---
 
-# License
-
-This project is developed for educational purposes and portfolio demonstration.
+⭐ If you found this project useful, consider giving it a star on GitHub.
