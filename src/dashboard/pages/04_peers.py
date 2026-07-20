@@ -49,6 +49,11 @@ st.success(f"Selected Company : {company_id}")
 
 company_df, peer_df = get_peer_comparison_data(company_id)
 
+if company_df.empty:
+    st.info(
+        "Peer comparison data is not available for this company because sufficient historical data is not available."
+    )
+    st.stop()
 company_metrics = company_df.set_index("metric")["value"]
 peer_metrics = peer_df.set_index("metric")["value"]
 

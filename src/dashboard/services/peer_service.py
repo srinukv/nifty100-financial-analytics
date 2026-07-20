@@ -94,8 +94,6 @@ def get_peer_comparison_data(company_id: str):
     peer_avg_df = execute_query(peer_avg_query, (peer_group,))
 
     return company_df, peer_avg_df
-
-@st.cache_data(ttl=600)
 def get_peer_table(peer_group):
     query = """
     SELECT DISTINCT
